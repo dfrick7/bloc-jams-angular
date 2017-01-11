@@ -42,3 +42,6 @@ var albumAcdc = {
          { title: 'Rock and Roll Aint Noise Pollution', duration: '2:15'}
      ]
  };
+var getAlbum = function(){
+    return albumPicasso;
+};
