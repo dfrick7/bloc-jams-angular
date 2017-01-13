@@ -1,4 +1,5 @@
 (function() {
+    
     function Fixtures() {
         var Fixtures = {};
         
@@ -33,10 +34,16 @@
      };
         
         Fixtures.getAlbum = function() {
-            
             return albumPicasso;
-     };
+        };
         
+        Fixtures.getCollection = function(numberOfAlbums){
+            collection = [];
+            for(i = 0; i < numberOfAlbums; i++) {
+                collection.push(angular.copy(albumPicasso));    
+            }
+            return collection;
+        };
         return Fixtures;
     }
  
