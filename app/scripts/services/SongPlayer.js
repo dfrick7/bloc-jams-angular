@@ -31,6 +31,16 @@
             currentSong = song;
         };
         
+/**
+    * @function playSong
+    * @desc Play songs by using the buzz library
+    * @param {Object} song
+*/
+        
+        var playSong = function(song){
+        currentBuzzObject.play();
+        song.playing = true;
+        
         SongPlayer.play = function(song) {
             if (currentSong !== song) {
                 setSong(song);
