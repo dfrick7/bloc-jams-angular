@@ -72,11 +72,10 @@
             song = song || SongPlayer.currentSong;
             if (SongPlayer.currentSong !== song) {
                 setSong(song);
-                currentBuzzObject.play();
-                song.playing = true;
+                playSong(song);
             } else if (SongPlayer.currentSong === song) {
                 if (currentBuzzObject.isPaused()) {
-                    currentBuzzObject.play();
+                    playSong(song);
                 }
             }
         };
@@ -120,7 +119,7 @@
             var currentSongIndex = getSongIndex(SongPlayer.currentSong)
             currentSongIndex ++;
 
-            if (currentSongIndex >= currentAlbum.songs){
+            if (currentSongIndex >= currentAlbum.songs.length){
                 stopSong();
 
             } else {
@@ -129,7 +128,6 @@
                 playSong(song);
             }
         };
-
             return SongPlayer;
         }
 
