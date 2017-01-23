@@ -1,5 +1,10 @@
  (function() {
      function seekBar($document) {
+/*
+* @function calculatePercent
+* @desc calculates the horizontal percent along the seek bar where the event occurred.
+* @return {number}
+*/
          var calculatePercent = function(seekBar, event) {
              var offsetX = event.pageX - seekBar.offset().left;
              var seekBarWidth = seekBar.width();
@@ -18,7 +23,7 @@
                  scope.max = 100;
                  
                  var seekBar = $(element);
- 
+                
                  var percentString = function () {
                      var value = scope.value;
                      var max = scope.max;
@@ -34,6 +39,7 @@
                      var percent = calculatePercent(seekBar, event);
                      scope.value = percent * scope.max;
                  };
+                 
                  scope.trackThumb = function() {
                      $document.bind('mousemove.thumb', function(event) {
                          var percent = calculatePercent(seekBar, event);
@@ -46,6 +52,10 @@
                          $document.unbind('mousemove.thumb');
                          $document.unbind('mouseup.thumb');
                      });
+                 };
+                 
+                 scope.thumbStyle = function(){
+                     return {left: percentString()};
                  };
              }
          };
