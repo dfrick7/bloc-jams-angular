@@ -37,12 +37,18 @@
                  var percentString = function () {
                      var value = scope.value;
                      var max = scope.max;
-                     var percent = value / max * 100;
+                     var percent = (value/max) * 100;
                      return percent + "%";
                  };
  
                  scope.fillStyle = function() {
                      return {width: percentString()};
+                 };
+                 
+                 var notifyOnChange = function(newValue) {
+                     if (typeof scope.onChange === 'function') {
+                         scope.onChange({value: newValue});
+                     }
                  };
                  
                  scope.onClickSeekBar = function(event) {
@@ -58,13 +64,7 @@
                          scope.$apply(function() {
                              scope.value = percent * scope.max;
                              notifyOnChange(scope.value);
-                         });
-                         
-                         var notifyOnChange = function(newValue) {
-                             if (typeof scope.onChange === 'function') {
-                                 scope.onChange({value: newValue});
-                             }
-                         };
+                         });                         
                      });
  
                      $document.bind('mouseup.thumb', function() {

@@ -73,6 +73,12 @@
 * @type {Number}
 */
         SongPlayer.currentTime = null;
+        
+/**
+* @desc Starting volume level
+* @type {Number}
+*/
+        SongPlayer.volume = 30;
 /**
 * @function Songplayer.play
 * @desc checks if current song playing
@@ -139,18 +145,31 @@
                 playSong(song);
             }
         };
-            return SongPlayer;
-        }
 /**
- * @function setCurrentTime
- * @desc Set current time (in seconds) of currently playing song
- * @param {Number} time
+* @function setCurrentTime
+* @desc Set current time (in seconds) of currently playing song
+* @param {Number} time
 */
     SongPlayer.setCurrentTime = function(time) {
         if (currentBuzzObject) {
             currentBuzzObject.setTime(time);
         }
     };
+    
+/**
+* @function sets volume
+* @desc controls volume: updates volume based on new values
+* @param {Number} volume
+*/
+        SongPlayer.setVolume = function(volume) {
+        if (currentBuzzObject) {
+            currentBuzzObject.setVolume(volume);
+        }
+            SongPlayer.volume = volume;
+        };
+        
+        return SongPlayer;
+    }
 
     angular
         .module('blocJams')
